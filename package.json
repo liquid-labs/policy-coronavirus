@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "$(npm bin)/liq-gen-make > .build/main.makefile && make -f .build/main.makefile --silent",
+    "build:refresh": "rm -rf .build policy && $(npm bin)/liq-init-docs run && make -f .build/main.makefile --silent"
+
   },
   "keywords": [],
   "author": "Zane Rockenbaugh <zane@liquid-labs.com>",
@@ -16,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/Liquid-Labs/coronavirus-home-lockdown/issues"
   },
-  "homepage": "https://github.com/Liquid-Labs/coronavirus-home-lockdown#readme"
+  "homepage": "https://github.com/Liquid-Labs/coronavirus-home-lockdown#readme",
+  "dependencies": {
+    "@liquid-labs/policies-model": "file:.yalc/@liquid-labs/policies-model",
+    "@liquid-labs/policy-home-lockdown": "^1.0.0-alpha.0"
+  }
 }
